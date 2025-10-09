@@ -1,30 +1,26 @@
 package application;
 
-import java.util.Locale;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import entities.Triangle;
 
 public class Program {
 	public static void main(String[] args) {
 		
-		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-	
-		int n = sc.nextInt();
-		double[] vect = new double[n];
 		
-		for (int i=0; i<n; i++) {
-			vect[i] = sc.nextDouble();
+		try {
+			String[] vect = sc.nextLine().split(" ");
+			int position = sc.nextInt();
+			System.out.println(vect[position]);
+			
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Invalid position!");
+			
+		} catch (InputMismatchException e) {
+			System.out.println("Input error");
 		}
 		
-		double soma = 0;
-		
-		for (int i = 0; i<n; i++) {
-			soma +=vect[i];
-		}
-		double media = soma / n;
-		
-		System.out.printf("AVERAGE HEIGHT: %.2f%n", + media);
+		System.out.println("End of program");
 		
 		sc.close();
 	}
